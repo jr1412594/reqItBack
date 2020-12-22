@@ -2,6 +2,15 @@ class UsersController < ApplicationController
     def index
         @users = User.all 
 
-        render json: @users, include: [:items] 
+        render json: @users
+    end
+
+    def create
+        @user = User.create(
+            name: params[:name],
+            room_number: params[:room_number]
+        )
+        
+        render json: @user
     end
 end
