@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :requests
   resources :users
   resources :items
   post 'users', to: 'users#create'
