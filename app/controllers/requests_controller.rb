@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
     def index
         @requests = Request.all 
 
-        render json: @requests
+        render json: @requests, include: [:user, :item]
     end
     
     def create
@@ -12,5 +12,13 @@ class RequestsController < ApplicationController
         )
 
         render json: @request
+    end
+
+    def destroy
+        @request = Request.find(params[:id])
+
+        @request.destroy
+
+        render json: {message: 'Request has been completed'}
     end
 end
