@@ -6,11 +6,20 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(
-            name: params[:name],
-            room_number: params[:room_number]
-        )
-        
-        render json: @user
+        @user = User.new user_params
+
+        if @user.valid?
+            User.save 
+            render json: @user
+        else 
+            render json: @user.errors 
+        end
+    end
+
+
+    private
+
+    def user_params
+        params.require(:user).permit :name, :room_number
     end
 end
