@@ -9,10 +9,10 @@ class UsersController < ApplicationController
         @user = User.new user_params
 
         if @user.valid?
-            User.save 
+            @user.save 
             render json: @user
         else 
-            render json: @user.errors 
+            render json: @user.errors, status: :length_required
         end
     end
 

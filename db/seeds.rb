@@ -8,6 +8,11 @@
 Request.destroy_all
 User.destroy_all
 Item.destroy_all
+Issue.destroy_all
+
+Issue.create(
+    image: "https://firebasestorage.googleapis.com/v0/b/req-it-issues.appspot.com/o/images%2Ftest-image?alt=media&token=1118fcdb-6bd1-4f86-a6a0-ac8738f1f559",
+)
 
 u1 = User.create(
     name: "Johnny Ocean",
